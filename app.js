@@ -31,7 +31,6 @@ function loadState() {
     console.warn('localStorage o‘qishda xatolik, namuna ma’lumotlar tiklanmoqda:', err);
   }
   const initial = createInitialState();
-  saveState(initial);
   return initial;
 }
 
