@@ -16,13 +16,8 @@ import {
   updateEventCapacity,
   markAttendance
 } from './rules.js';
-
-let state = loadState();
 let activeScreen = 'catalog';
-let selectedEventId = state.events[0]?.id || '';
-let selectedAttendanceEventId = state.events[1]?.id || state.events[0]?.id || '';
 let lastResult = null;
-
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -48,7 +43,9 @@ function saveState(nextState) {
     console.warn('localStorage saqlashda xatolik:', err);
   }
 }
-
+let state = loadState();
+let selectedEventId = state.events[0]?.id || '';
+let selectedAttendanceEventId = state.events[1]?.id || state.events[0]?.id || '';
 function getActiveUser() {
   return state.users.find((u) => u.id === state.activeUserId) || state.users[0];
 }
